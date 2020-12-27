@@ -17,10 +17,10 @@ variable "deployment_endpoint" {
     type = "map"
 
     default = {
-        dev     = "dev.hello.fuchicorp.com"
-        qa      = "qa.hello.fuchicorp.com"
-        prod    = "hello.fuchicorp.com"
-        stage   = "stage.hello.fuchicorp.com"
+        dev     = "dev.hello.yunusnalbant.com"
+        qa      = "qa.hello.yunusnalbant.com"
+        prod    = "hello.yunusnalbant.com"
+        stage   = "stage.hello.yunusnalbant.com"
     }
 
     description = "- (Optional) The endpooint of the deployment."
