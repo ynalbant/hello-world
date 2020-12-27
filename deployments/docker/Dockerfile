@@ -1,4 +1,4 @@
-## build the image Based on python3 container
+## Based on python3 container
 FROM python:3 
 
 

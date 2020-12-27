@@ -22,20 +22,24 @@ spec:
     {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.app.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.app.port }}
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.app.port }}
+{{- if .Values.globalEnvironments.enabled }}
+          env:
+{{ toYaml .Values.globalEnvironments.environments | indent 10 }}
+{{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
